@@ -12,7 +12,7 @@ with col2:
     st.title("Luigi di Lillo")
     content = """" 
     Ciao! sono Luigi, Junior Marketing Specialist,
-    appassionato di data analysis e questo è uno dei 
+    e appassionato di data analysis. Questo è uno dei 
     progetti relativi alla mia roadmap per diventare
     prolifico nell'utilizzo di Python. Scorrendo in basso potrai trovare
     tutti i link ai progetti che sto sviluppando per allenarmi
@@ -20,15 +20,21 @@ with col2:
     st.info(content)
 with col3:
     information = "Di seguito, una serie di mini-applicativi sviluppati con Python"
-    st.write(information)
+    st.info(information)
 
-col4, col5 = st.columns(2)
+col4,empty_col, col5 = st.columns([1.5, 0.5, 1.5])
 
 df = pandas.read_csv("data.csv", sep=";")
 with col4:
     for index, row in df[:10].iterrows():
         st.header(row["title"])
+        st.write(row["description"])
+        st.image("images/" + row["image"])
+        st.write(f"[Codice sorgente]({row['url']})")
 
 with col5:
     for index, row in df[10:].iterrows():
         st.header(row["title"])
+        st.write(row["description"])
+        st.image("images/" + row["image"])
+        st.write(f"[Codice sorgente]({row['url']})")
