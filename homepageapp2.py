@@ -1,4 +1,6 @@
+import pandas
 import streamlit as st
+import pandas as panda
 
 st.set_page_config(layout="wide")
 col1, col2 = st.columns(2)
@@ -17,5 +19,16 @@ with col2:
     """
     st.info(content)
 with col3:
-    information = "Ajeje brazorf lorem ipsum dolor amet"
+    information = "Di seguito, una serie di mini-applicativi sviluppati con Python"
     st.write(information)
+
+col4, col5 = st.columns(2)
+
+df = pandas.read_csv("data.csv", sep=";")
+with col4:
+    for index, row in df[:10].iterrows():
+        st.header(row["title"])
+
+with col5:
+    for index, row in df[10:].iterrows():
+        st.header(row["title"])
